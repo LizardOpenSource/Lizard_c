@@ -8,19 +8,20 @@
 #include <stdint.h>
 
 // compile and run example:
-// $ gcc Lizard.c -o Lizard -O2
-// $ ./Lizard
+// Linux : $ gcc Lizard.c -o Lizard -O3 -fomit-frame-pointer -msse2avx -mavx2 -march=native -std=c99
+// OS X  : $ gcc Lizard.c -o Lizard -O3 -fomit-frame-pointer -mavx2 -march=native -std=c99
+// or just $ make new 
 
 //////////////////////////////////  PARAMETER CHOICES  /////////////////////////////////////
 //#define PARAMS_Classical								// classical parameter
-//#define PARAMS_Recommended							// recommended parameter
+#define PARAMS_Recommended							// recommended parameter
 //#define PARAMS_Classical_Plaintext_32bit				// classical parameter with 32-bit plaintext
-#define PARAMS_CCA									// CCA parameter
+//#define PARAMS_CCA									// CCA parameter
 //#define PARAMS_RING									// Ring version parameter
 
 //////////////////////////////////  PARAMETER SETS  ////////////////////////////////////////
 
-#define iter 100 		// iteration number for keygen & EncDec test
+#define iter 100		// iteration number for keygen & EncDec test
 #define testnum 1000	// repeatetion number of Enc Dec procedure in a single iteration
 
 #ifdef PARAMS_Classical
@@ -246,6 +247,7 @@ void Keygen_CPA(){
 
 size_t gen_r_idx(uint16_t* r_idx){
 	size_t neg_start = 0;
+	size_t tmp, tmp2 = -1;
 	for(int i = 0; i < HR; ++i){
 		r_idx[i] = rand() % LWE_M;
 		neg_start += (rand() & 0x01);
@@ -820,7 +822,7 @@ int main(){
 	printf("\n  //////////////////////////////////////////////////////////////////\n\n");
 	printf("\t\t\t"PARAMNAME" Parameter\n\n");
 	printf("    LWE dimension: %d, \t\tLWR dimension: %d\n", LWE_N, LWE_M);
-	printf("    Plaintext dimension: %d, \t\tPlaintext Modulus: %d bits\t\n", LWE_N, LOG_T);
+	printf("    Plaintext dimension: %d, \t\tPlaintext Modulus: %d bits\t\n", LWE_L, LOG_T);
 	printf("    Public Key modulus: %d bits, \tCiphertext modulus: %d bits\t\n\n", LOG_Q, LOG_P);
 	printf("  //////////////////////////////////////////////////////////////////\n\n");
 	printf("\t\t\tPerformance Test\n\n");
@@ -830,6 +832,7 @@ int main(){
 
 	// Encryption and Decryption Test
 	ENCDECTEST();	
+
 	printf("\n  //////////////////////////////////////////////////////////////////\n\n");
 
 }
