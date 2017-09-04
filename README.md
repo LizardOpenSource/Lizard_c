@@ -20,9 +20,3 @@ $ make new
 
 Note that the AVX2 optimization is included in our compile options. For the implementation on the machines without AVX2 instruction, you can erase an AVX2 option -mavx2 before running the code.
 
-When you are looking for more details on Lizard, you may check the following paper.
-
-Reference Paper : 
-Jung Hee Cheon, Duhyeong Kim, Joohee Lee, Yongsoo Song, 
-"Lizard: Cut off the Tail! Practical Post-Quantum Public-Key Encryption from LWE and LWR", 
-https://eprint.iacr.org/2016/1126.
