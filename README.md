@@ -3,7 +3,7 @@
 
 Lizard is a public key encryption scheme based on the Learning with Errors(LWE) problem and the Learning with Rounding(LWR) problem.
 
-The code consists of IND-CPA Lizard, IND-CCA Lizard and Ring Lizard, which are included in a single c file.
+The code consists of IND-CPA Lizard and IND-CCA Lizard, which are included in a single c file.
 
 To build the code, the following commands are sufficient :
 
