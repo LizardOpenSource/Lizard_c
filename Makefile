@@ -1,10 +1,10 @@
 CC = gcc
 
-CFLAGS=-O3 -fomit-frame-pointer -mavx2 -march=native -std=c99
+CFLAGS=-O3 -fomit-frame-pointer -msse2avx -mavx2 -march=native -std=c99
 
 all :
-	$(CC) $(CFLAGS) -c Lizard.c 
-	$(CC) $(CFLAGS) -o Lizard Lizard.o
+	$(CC) $(CFLAGS) -c Lizard.c fips202.c 
+	$(CC) $(CFLAGS) -o Lizard Lizard.o fips202.o 
 	
 run : all
 	./Lizard
